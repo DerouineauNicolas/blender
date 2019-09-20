@@ -1123,7 +1123,7 @@ compile_Python() {
     cd $_src
 
     ./configure --prefix=$_inst --libdir=$_inst/lib --enable-ipv6 \
-        --enable-loadable-sqlite-extensions --with-dbmliborder=bdb \
+        --enable-loadable-sqlite-extensions --enable-shared --with-dbmliborder=bdb \
         --with-computed-gotos --with-pymalloc
 
     make -j$THREADS && make install
