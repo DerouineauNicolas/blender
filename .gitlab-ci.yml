@@ -1,0 +1,14 @@
+image: docker:git
+services:
+  - docker:dind
+variables:
+  DOCKER_DRIVER: overlay
+
+build docker image:
+  stage: build
+  script:
+    - docker build -t meshtoolbox:ubuntu_blender2.8 .
+    - docker tag meshtoolbox:ubuntu_blender2.8 srvdev.delair.local:5000/delair-stack/meshtoolbox:ubuntu_blender2.8
+    - docker srvdev.delair.local:5000/delair-stack/meshtoolbox:ubuntu_blender2.8
+  only:
+    - custom_2.80
