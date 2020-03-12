@@ -1,7 +1,8 @@
 FROM ubuntu:16.04
 
 RUN apt-get update && apt-get install -q -y \
-    build-essential sudo \
+    build-essential sudo python \
+    python-numpy \
     git 
 
 COPY . /usr/src/blender/
@@ -24,3 +25,5 @@ RUN mkdir build && cd build &&  \
 RUN echo "/opt/lib/python-3.7/lib" > /etc/ld.so.conf.d/python.conf 
 RUN ldconfig
 ENV PATH "$PATH:/opt/lib/python-3.7/bin"
+
+RUN rm -rf /usr/src/blender/
